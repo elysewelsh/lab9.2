@@ -3,22 +3,22 @@ import TextInput from '../TextInput/TextInput'
 import { StatsDisplay } from "../StatsDisplay/StatsDisplay";
 import { useState } from 'react';
 
-function CharacterCounter ({minWords = 25, maxWords = 100, targetReadingTime = 0}: CharacterCounterProps) {
+function CharacterCounter ({minWords, maxWords, targetReadingTime}:CharacterCounterProps) {
 
     const [stats, setStats] = useState({
         characterCount: 0,
         wordCount: 0,
-        readingTime: 0, // in minutes
-        minWords: 0,
-        maxWords: 0,
-        targetReadingTime: 0
+        readingTime: 0, // in seconds
+        minWords: minWords,
+        maxWords: maxWords,
+        targetReadingTime: targetReadingTime
     });
 
     function handleTextChange (inputValue: string) {
         const countCharacters: number = inputValue.length;
         const wordHolder: string[] = inputValue.split(' ');
         const countWords: number = wordHolder.length;
-        const timedRead: number = (countWords/3);
+        const timedRead: number = Math.floor(countWords/3);
         setStats((prevStatsState) => {return {
             ...prevStatsState, 
             characterCount: countCharacters,
