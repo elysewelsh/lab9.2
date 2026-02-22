@@ -16,6 +16,8 @@ An application for analyzing text input and calculating statistics in real-time.
 ## 🏛️ Component Architecture
 
 The container component (CharacterCounter) holds the centralized state for the text and calculated metrics. It passes callback functions down to the input component (TextInput) to receive raw string data, processes that data locally, and pushes the updated metrics down to the presentational component (StatsDisplay).
+
+ ```       
                     [ App ]
             (Props: min/max counts)                             
                         │                    
@@ -28,6 +30,7 @@ The container component (CharacterCounter) holds the centralized state for the t
               │                    │             
               ▼                    ▼             
         [ TextInput]       [ StatsDisplay ]   
+```
 
 ## ⚙️ Installation
 
