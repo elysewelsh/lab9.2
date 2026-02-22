@@ -1,9 +1,9 @@
-import { CharacterCounter } from "./components/CharacterCounter/CharacterCounter"
-import { useState } from 'react'
-import type { TextStats } from './components/StatsDisplay/StatsDisplay'
-import { StatsDisplay } from "./components/StatsDisplay/StatsDisplay";
-import { TextInput } from "./components/TextInput/TextInput";
-import type { StatsDisplayProps } from "./types";
+import CharacterCounter from "./components/CharacterCounter/CharacterCounter"
+// import { useState } from 'react'
+// import type { TextStats } from './components/StatsDisplay/StatsDisplay'
+// import { StatsDisplay } from "./components/StatsDisplay/StatsDisplay";
+// import { TextInput } from "./components/TextInput/TextInput";
+// import type { StatsDisplayProps } from "./types";
 
 
 

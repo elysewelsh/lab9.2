@@ -1,11 +1,5 @@
 import type { TextInputProps } from '../../types';
 
-// export interface TextInputProps {
-//   onTextChange: (text: string) => void;
-//   placeholder?: string;
-//   initialValue?: string;
-// }
-
 function TextInput ({onTextChange, placeholder = 'Start typing...', initialValue = ''}: TextInputProps) {
 
   return (
@@ -21,4 +15,4 @@ function TextInput ({onTextChange, placeholder = 'Start typing...', initialValue
   );
 };
 
-export {TextInput};
+export default TextInput;
