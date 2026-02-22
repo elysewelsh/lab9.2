@@ -12,25 +12,32 @@ function StatsDisplay ({stats, showReadingTime}: StatsDisplayProps) {
     let formatMinutes: string = minutes < 10 ? "0" + minutes.toString() :  minutes.toString();
     let formatSeconds: string = seconds < 10 ? "0" + seconds.toString() : seconds.toString();
 
+    
+    const limitNotice = {
+        success: 'text-2xl text-center text-green-700',
+        keepWorking: 'text-2xl text-center text-black-900',
+        stopTyping: 'text-2xl text-center text-red-700'
+    };
+
     return (
-        <div className="flex flex-row gap-4 mt-4 p-4 border border-gray-300 rounded-lg">
+        <div className="flex flex-row gap-10 justify-center mt-4 p-4 border border-gray-300 rounded-lg">
             <div>
-                <p>Characters</p>
-                <div className="calculation">{stats.characterCount}</div>
+                <p className="text-center">Characters</p>
+                <div className="text-2xl text-center">{stats.characterCount}</div>
+            </div>
+            <div className="">
+                <p className="text-center">Words</p>
+                <div className={stats.wordCount < stats.minWords ? limitNotice.keepWorking : stats.wordCount > stats.maxWords ? limitNotice.stopTyping : limitNotice.success}>{stats.wordCount}</div>
+                <p className="text-center">Min: {stats.minWords} | Max: {stats.maxWords}</p>
             </div>
             <div>
-                <p>Words</p>
-                <div className="calculation">{stats.wordCount}</div>
-                <p>Min: {stats.minWords} | Max: {stats.maxWords}</p>
-            </div>
-            <div>
-                <p>Reading Time</p>
-                {showReadingTime ? (<div className="calculation"> {formatMinutes}:{formatSeconds} </div>) : <div className="calculation"> 00:00 </div>}
-                {(stats.targetReadingTime > 0 && stats.targetReadingTime !== undefined) ? <div className="calculation"> Target Reading Time: {stats.targetReadingTime} minutes</div> : <div></div>}
+                <p className="text-center">Reading Time</p>
+                {showReadingTime ? (<div className={stats.readingTime < stats.targetReadingTime*60 ? limitNotice.keepWorking : stats.readingTime > stats.targetReadingTime*60 ? limitNotice.stopTyping : limitNotice.success}> {formatMinutes}:{formatSeconds} </div>) : <div className="text-2xl text-center"> 00:00 </div>}
+                {(stats.targetReadingTime !== undefined && stats.targetReadingTime > 0) ? <div className="text-center"> Target Reading Time: {stats.targetReadingTime} minutes</div> : <div></div>}
             </div>
         </div>
     )
-}
+};
 
 export {StatsDisplay};
 

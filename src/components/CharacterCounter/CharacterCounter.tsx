@@ -30,6 +30,7 @@ function CharacterCounter ({minWords, maxWords, targetReadingTime}:CharacterCoun
             };
         });
     };
+    
     return (
         <div>
             <TextInput onTextChange={handleTextChange} placeholder="Start typing..." initialValue="" />
